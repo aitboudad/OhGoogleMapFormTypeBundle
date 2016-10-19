@@ -1,16 +1,16 @@
 {% block oh_google_maps_widget %}
 <div {{ block('widget_container_attributes') }}>
-	{% block oh_google_maps_html %} 
+	{% block oh_google_maps_html %}
 	<div id="{{ id }}_container">
 		<input type="text" id="{{ id }}_input" /><button id="{{ id }}_search_button" class="btn">Search</button><br /><a href="#" id="{{ id }}_current_position">Current location</a>
 		<div id="{{ id }}_map_canvas" class="gmap" style="width: {{ map_width }}; height: {{ map_height }}"></div>
 		<div id="{{ id }}_error"></div>
 	</div>
 	{% endblock %}
-	{% block oh_google_maps_fields %} 
+	{% block oh_google_maps_fields %}
 		{% for child in form %}
 		    {{ form_row(child) }}
-        {% endfor %}
+	    {% endfor %}
 	{% endblock %}
 	{% block oh_google_maps_javascripts %}
 		{% if include_jquery %}
@@ -19,11 +19,7 @@
 		{% if include_gmaps_js %}
 		<script type="text/javascript" src="//maps.google.com/maps/api/js"></script>
 		{% endif %}
-		{% javascripts
-			'@OhGoogleMapFormTypeBundle/Resources/public/js/jquery.ohgooglemaps.js'
-		%}
-		<script type="text/javascript" src="{{ asset_url }}"></script>
-		{% endjavascripts %}
+		<script type="text/javascript" src="/bundles/ohgooglemapformtype/js/jquery.ohgooglemaps.js"></script>
 	{% endblock %}
 	{% block oh_google_maps_javascript %}
 		{% block oh_google_maps_callback %}
@@ -31,7 +27,7 @@
 				var oh_google_maps_callback = function(location, gmap){
 					// your callback function here
 				}
-			</script>	
+			</script>
 		{% endblock %}
 		<script type="text/javascript">
 

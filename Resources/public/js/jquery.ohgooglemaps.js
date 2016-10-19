@@ -36,9 +36,9 @@
 				center: center,
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 			};
-			
+
 			var $this = this;
-			
+
 			this.map =  new google.maps.Map(this.map_el[0], mapOptions);
 
 			this.addMarker(center);
@@ -56,7 +56,7 @@
 			});
 
 			this.settings.search_action_el.click($.proxy(this.searchAddress, $this));
-			
+
 			this.settings.current_position_el.click($.proxy(this.currentPosition, $this));
 		},
 
@@ -78,23 +78,23 @@
 		currentPosition : function(e){
 			e.preventDefault();
 			var $this = this;
-			
+
 			if ( navigator.geolocation ) {
-				navigator.geolocation.getCurrentPosition ( 
+				navigator.geolocation.getCurrentPosition (
 					function(position) {
 						var clientPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 						$this.insertMarker(clientPosition);
 						$this.map.setCenter(clientPosition);
 						$this.map.setZoom(16);
-					}, 
+					},
 					function(error) {
 						$this.settings.error_callback(error);
 					}
-				);      
+				);
 			} else {
 				$this.settings.search_error_el.text('Your broswer does not support geolocation');
 			}
-			
+
 		},
 
 		updateLocation : function (location){
@@ -146,7 +146,7 @@
 		});
 
 	};
-	
+
 	$.fn.ohGoogleMapType.defaultSettings = {
 			  'search_input_el'    : null,
 			  'search_action_el'   : null,
